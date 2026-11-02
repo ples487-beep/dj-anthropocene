@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://bp6gj1p45b4wn"]
+
+[ext_resource type="Script" path="res://scripts/computer_terminal.gd" id="1_terminal"]
+
+[sub_resource type="StandardMaterial3D" id="Material_case"]
+albedo_color = Color(0.16, 0.2, 0.22, 1)
+
+[sub_resource type="StandardMaterial3D" id="Material_desk"]
+albedo_color = Color(0.48, 0.36, 0.25, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="Material_screen"]
+shading_mode = 0
+albedo_color = Color(0.2, 0.65, 0.51, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_monitor"]
+material = SubResource("Material_case")
+size = Vector3(0.8966675, 0.52337646, 0.1328125)
+
+[sub_resource type="BoxMesh" id="BoxMesh_desk"]
+material = SubResource("Material_desk")
+
+[sub_resource type="BoxMesh" id="BoxMesh_tower"]
+material = SubResource("Material_case")
+size = Vector3(0.34033203, 0.6505127, 0.5684204)
+
+[sub_resource type="QuadMesh" id="QuadMesh_screen"]
+material = SubResource("Material_screen")
+size = Vector2(1.78, 0.96)
+
+[sub_resource type="BoxMesh" id="BoxMesh_leg"]
+material = SubResource("Material_desk")
+size = Vector3(0.16, 1.4, 0.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape_desk"]
+size = Vector3(4.03, 1.55, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape_interaction"]
+size = Vector3(4.8, 2.4, 2.8)
+
+[node name="Computer" type="StaticBody3D"]
+script = ExtResource("1_terminal")
+
+[node name="Monitor" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.236282, 0, 0, 0, 2.236282, 0, 0, 0, 1, -0.6103945, 2.2648861, -5.3937545)
+mesh = SubResource("BoxMesh_monitor")
+
+[node name="Screen" type="MeshInstance3D" parent="."]
+position = Vector3(-0.6103945, 2.2648861, -5.32)
+mesh = SubResource("QuadMesh_screen")
+
+[node name="Desk" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.0253077, 0, 0, 0, 0.22362813, 0, 0, 0, 1, -0.32161713, 1.5457008, -5.4453144)
+mesh = SubResource("BoxMesh_desk")
+
+[node name="Tower" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.236282, 0, 0, 0, 2.236282, 0, 0, 0, 1, 1.0829039, 2.2315912, -5.6492996)
+mesh = SubResource("BoxMesh_tower")
+
+[node name="LeftLeg" type="MeshInstance3D" parent="."]
+position = Vector3(-2.1, 0.8, -5.4453144)
+mesh = SubResource("BoxMesh_leg")
+
+[node name="RightLeg" type="MeshInstance3D" parent="."]
+position = Vector3(1.45, 0.8, -5.4453144)
+mesh = SubResource("BoxMesh_leg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(-0.32161713, 0.875, -5.4453144)
+shape = SubResource("BoxShape_desk")
+
+[node name="InteractionArea" type="Area3D" parent="."]
+position = Vector3(-0.32161713, 1.2, -4.3)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+shape = SubResource("BoxShape_interaction")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_body_exited"]

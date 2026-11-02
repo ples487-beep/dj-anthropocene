@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://be7yrhmfevswk"]
 
-[ext_resource type="Script" uid="uid://3tb0uixdaigx" path="res://player_d.gd" id="1_gi6dw"]
+[ext_resource type="Script" uid="uid://3tb0uixdaigx" path="res://scripts/player_d.gd" id="1_gi6dw"]
 [ext_resource type="Texture2D" uid="uid://dx7i341c0qsoy" path="res://assets/frente.png" id="2_bvnqx"]
 [ext_resource type="Texture2D" uid="uid://bpavv3g6eih32" path="res://assets/direita.png" id="3_odts1"]
 [ext_resource type="Texture2D" uid="uid://bqdbhpr8e5vmb" path="res://assets/esquerda.png" id="4_oyx56"]
@@ -50,15 +50,19 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aq604"]
-radius = 0.35
-height = 1.8
+radius = 0.42
+height = 2.16
 
 [node name="pessoa" type="Node3D" unique_id=1368292238]
 
-[node name="PlayerD" type="CharacterBody3D" parent="." unique_id=1069621203]
+[node name="PlayerD" type="CharacterBody3D" parent="." unique_id=1069621203 groups=["player"]]
+collision_layer = 2
+floor_snap_length = 0.15
 script = ExtResource("1_gi6dw")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="PlayerD" unique_id=11880346]
+pixel_size = 0.0042
+billboard = 2
 sprite_frames = SubResource("SpriteFrames_1pysl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerD" unique_id=1794960773]

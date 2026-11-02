@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://bp6gj1p45b4wn"]
-
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1107735636]
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1460492271]
-offset_right = 1157.0
-offset_bottom = 651.0
-color = Color(0.14509805, 1, 1, 1)
