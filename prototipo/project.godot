@@ -1,3 +1,11 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [application]
@@ -8,7 +16,6 @@ config/features=PackedStringArray("4.7", "Mobile")
 
 [display]
 
-window/size/viewport_width=1152
 window/size/viewport_height=720
 window/size/min_width=800
 window/size/min_height=480
@@ -55,12 +62,12 @@ move_right={
 
 [physics]
 
-common/enable_object_picking=false
-common/physics_interpolation=true
 3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
+common/enable_object_picking=false
 
 [rendering]
 
-renderer/rendering_method="mobile"
 rendering_device/vsync/frame_queue_size=1
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="mobile"

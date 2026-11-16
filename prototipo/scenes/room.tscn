@@ -1,17 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://duamsyyax1n0b"]
 
-[ext_resource type="Script" path="res://scripts/room.gd" id="1_room"]
-[ext_resource type="PackedScene" path="res://scenes/pessoa.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/pc.tscn" id="3_pc"]
-[ext_resource type="Script" path="res://scripts/room_camera.gd" id="4_camera"]
+[ext_resource type="Script" uid="uid://iuhmkicwv81u" path="res://scripts/room.gd" id="1_room"]
+[ext_resource type="PackedScene" uid="uid://be7yrhmfevswk" path="res://scenes/pessoa.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://bp6gj1p45b4wn" path="res://scenes/pc.tscn" id="3_pc"]
+[ext_resource type="Script" uid="uid://rbpybric2jru" path="res://scripts/room_camera.gd" id="4_camera"]
 
 [sub_resource type="StandardMaterial3D" id="Material_wall"]
 albedo_color = Color(0.38, 0.43, 0.46, 1)
-roughness = 1.0
-
-[sub_resource type="StandardMaterial3D" id="Material_floor"]
-albedo_color = Color(0.26, 0.3, 0.31, 1)
-roughness = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_wall"]
 material = SubResource("Material_wall")
@@ -19,6 +14,9 @@ size = Vector3(12, 6, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape_wall"]
 size = Vector3(12, 6, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="Material_floor"]
+albedo_color = Color(0.26, 0.3, 0.31, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_floor"]
 material = SubResource("Material_floor")
@@ -34,92 +32,85 @@ ambient_light_source = 2
 ambient_light_color = Color(0.72, 0.8, 0.85, 1)
 ambient_light_energy = 0.6
 
-[node name="Room" type="Node3D"]
+[node name="Room" type="Node3D" unique_id=567070281]
 script = ExtResource("1_room")
 
-[node name="wallFront" type="StaticBody3D" parent="."]
+[node name="wallFront" type="StaticBody3D" parent="." unique_id=360407349]
 
-[node name="wall_front" type="MeshInstance3D" parent="wallFront"]
-position = Vector3(0, 3, 6)
+[node name="wall_front" type="MeshInstance3D" parent="wallFront" unique_id=1303480362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6)
 mesh = SubResource("BoxMesh_wall")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wallFront"]
-position = Vector3(0, 3, 6)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wallFront" unique_id=1116197995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6)
 shape = SubResource("BoxShape_wall")
 
-[node name="wallBack" type="StaticBody3D" parent="."]
+[node name="wallBack" type="StaticBody3D" parent="." unique_id=860898367]
 
-[node name="wall_back" type="MeshInstance3D" parent="wallBack"]
-position = Vector3(0, 3, -6)
+[node name="wall_back" type="MeshInstance3D" parent="wallBack" unique_id=570313949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -6)
 mesh = SubResource("BoxMesh_wall")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wallBack"]
-position = Vector3(0, 3, -6)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wallBack" unique_id=850584072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -6)
 shape = SubResource("BoxShape_wall")
 
-[node name="wallRight" type="StaticBody3D" parent="."]
+[node name="wallRight" type="StaticBody3D" parent="." unique_id=1165609595]
 
-[node name="wall_right" type="MeshInstance3D" parent="wallRight"]
-position = Vector3(-6, 3, 0)
-rotation_degrees = Vector3(0, 90, 0)
+[node name="wall_right" type="MeshInstance3D" parent="wallRight" unique_id=1129879578]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6, 3, 0)
 mesh = SubResource("BoxMesh_wall")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wallRight"]
-position = Vector3(-6, 3, 0)
-rotation_degrees = Vector3(0, 90, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wallRight" unique_id=84674204]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6, 3, 0)
 shape = SubResource("BoxShape_wall")
 
-[node name="wallLeft" type="StaticBody3D" parent="."]
+[node name="wallLeft" type="StaticBody3D" parent="." unique_id=991969520]
 
-[node name="wall_left" type="MeshInstance3D" parent="wallLeft"]
-position = Vector3(6, 3, 0)
-rotation_degrees = Vector3(0, 90, 0)
+[node name="wall_left" type="MeshInstance3D" parent="wallLeft" unique_id=1805789152]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 3, 0)
 mesh = SubResource("BoxMesh_wall")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wallLeft"]
-position = Vector3(6, 3, 0)
-rotation_degrees = Vector3(0, 90, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wallLeft" unique_id=1662566437]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 3, 0)
 shape = SubResource("BoxShape_wall")
 
-[node name="chao" type="StaticBody3D" parent="."]
+[node name="chao" type="StaticBody3D" parent="." unique_id=1621464505]
 
-[node name="chao" type="MeshInstance3D" parent="chao"]
+[node name="chao" type="MeshInstance3D" parent="chao" unique_id=782919636]
 mesh = SubResource("BoxMesh_floor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="chao"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chao" unique_id=2114600803]
 shape = SubResource("BoxShape_floor")
 
-[node name="Ceiling" type="StaticBody3D" parent="."]
-position = Vector3(0, 6, 0)
+[node name="Ceiling" type="StaticBody3D" parent="." unique_id=691113288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 
-[node name="Mesh" type="MeshInstance3D" parent="Ceiling"]
-mesh = SubResource("BoxMesh_floor")
+[node name="Mesh" type="MeshInstance3D" parent="Ceiling" unique_id=334209814]
 material_override = SubResource("Material_wall")
+mesh = SubResource("BoxMesh_floor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling" unique_id=846823793]
 shape = SubResource("BoxShape_floor")
 
-[node name="Camera" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="." unique_id=138852988]
 physics_interpolation_mode = 2
-position = Vector3(0, 2.8, 5.75)
-rotation_degrees = Vector3(-10, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, 2.8, 5.75)
 current = true
 fov = 70.0
-near = 0.05
 far = 50.0
 script = ExtResource("4_camera")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=864787742]
 environment = SubResource("Environment_room")
 
-[node name="RoomLight" type="OmniLight3D" parent="."]
-position = Vector3(0, 4.5, -0.5)
+[node name="RoomLight" type="OmniLight3D" parent="." unique_id=1414301670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -0.5)
 light_color = Color(1, 0.94, 0.85, 1)
 light_energy = 1.4
 omni_range = 15.0
 
-[node name="pessoa" parent="." instance=ExtResource("2_player")]
-position = Vector3(0, 1.2, 1.8)
+[node name="pessoa" parent="." unique_id=1542454973 instance=ExtResource("2_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3598242, 1.8)
 
-[node name="Computer" parent="." instance=ExtResource("3_pc")]
-
+[node name="Computer" parent="." unique_id=396080260 instance=ExtResource("3_pc")]
