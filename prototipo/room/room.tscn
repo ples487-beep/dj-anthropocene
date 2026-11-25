@@ -2,7 +2,10 @@
 
 [ext_resource type="PackedScene" path="res://player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" path="res://computer/computer.tscn" id="3_pc"]
-[ext_resource type="Script" path="res://room/room_camera.gd" id="4_camera"]
+[ext_resource type="Script" uid="uid://rbpybric2jru" path="res://camera/room_camera.gd" id="4_camera"]
+[ext_resource type="Script" path="res://camera/camera_shot.gd" id="5_shot"]
+[ext_resource type="Script" path="res://interaction/interactable.gd" id="6_interactable"]
+[ext_resource type="Script" path="res://interaction/interaction_prompt.gd" id="7_prompt"]
 
 [sub_resource type="StandardMaterial3D" id="Material_wall"]
 albedo_color = Color(0.38, 0.43, 0.46, 1)
@@ -11,6 +14,17 @@ roughness = 1.0
 [sub_resource type="StandardMaterial3D" id="Material_floor"]
 albedo_color = Color(0.26, 0.3, 0.31, 1)
 roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Material_outside"]
+shading_mode = 0
+albedo_color = Color(0.55, 0.86, 0.95, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_outside"]
+material = SubResource("Material_outside")
+size = Vector3(0.2, 10, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape_window_zone"]
+size = Vector3(2, 2.4, 3)
 
 [sub_resource type="Environment" id="Environment_room"]
 background_mode = 1
@@ -39,6 +53,15 @@ use_collision = true
 size = Vector3(12, 6, 0.2)
 material = SubResource("Material_wall")
 
+[node name="WindowHole" type="CSGBox3D" parent="WallRight"]
+position = Vector3(0, -0.2, 0)
+operation = 2
+size = Vector3(3, 2, 1)
+
+[node name="Outside" type="MeshInstance3D" parent="."]
+position = Vector3(-8, 3, 0)
+mesh = SubResource("BoxMesh_outside")
+
 [node name="WallLeft" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 3, 0)
 use_collision = true
@@ -57,7 +80,7 @@ use_collision = true
 size = Vector3(12, 0.2, 12)
 material = SubResource("Material_wall")
 
-[node name="Camera" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("default_shot")]
 physics_interpolation_mode = 2
 position = Vector3(0, 2.8, 5.75)
 rotation_degrees = Vector3(-10, 0, 0)
@@ -66,6 +89,41 @@ fov = 70.0
 near = 0.05
 far = 50.0
 script = ExtResource("4_camera")
+default_shot = NodePath("../Shots/Default")
+
+[node name="Shots" type="Node3D" parent="."]
+
+[node name="Default" type="Camera3D" parent="Shots"]
+position = Vector3(0, 2.8, 5.75)
+rotation_degrees = Vector3(-10, 0, 0)
+fov = 70.0
+near = 0.05
+far = 50.0
+script = ExtResource("5_shot")
+
+[node name="Window" type="Camera3D" parent="Shots"]
+position = Vector3(-3.9, 2.6, 0)
+rotation_degrees = Vector3(3, 90, 0)
+fov = 70.0
+near = 0.05
+far = 50.0
+script = ExtResource("5_shot")
+pan_degrees = Vector2(25, 12)
+blend_time = 0.8
+hide_player = true
+
+[node name="Interactables" type="Node3D" parent="."]
+
+[node name="Window" type="Area3D" parent="Interactables" node_paths=PackedStringArray("shot")]
+position = Vector3(-5, 1.2, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_interactable")
+prompt = "Look out the window"
+shot = NodePath("../../Shots/Window")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Window"]
+shape = SubResource("BoxShape_window_zone")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_room")
@@ -81,3 +139,6 @@ position = Vector3(0, 1.2, 1.8)
 
 [node name="Computer" parent="." instance=ExtResource("3_pc")]
 
+
+[node name="InteractionPrompt" type="CanvasLayer" parent="."]
+script = ExtResource("7_prompt")

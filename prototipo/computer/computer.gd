@@ -5,6 +5,8 @@ extends StaticBody3D
 
 var _screen: ComputerScreen
 
+@onready var _interactable: Interactable = $InteractionArea
+
 
 func _ready() -> void:
 	var monitor_texture: CefTexture2D = _configure(CefTexture2D.new())
@@ -16,11 +18,14 @@ func _ready() -> void:
 
 	_screen = ComputerScreen.new(_configure(CefTexture.new()))
 	add_child(_screen)
+	_screen.closed.connect(_interactable.disengage)
+	_interactable.engaged.connect(_on_engaged)
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"interact") and $InteractionArea.has_overlapping_bodies():
-		get_viewport().set_input_as_handled()
+func _on_engaged() -> void:
+	if _interactable.shot:
+		await get_tree().create_timer(_interactable.shot.blend_time).timeout
+	if _interactable.is_engaged():
 		_screen.open()
 
 

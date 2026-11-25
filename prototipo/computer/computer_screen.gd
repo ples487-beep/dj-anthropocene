@@ -1,6 +1,8 @@
 class_name ComputerScreen
 extends CanvasLayer
 
+signal closed
+
 const MARGIN := 40
 
 var _browser: CefTexture
@@ -38,6 +40,7 @@ func open() -> void:
 func _process(_delta: float) -> void:
 	if visible and Input.is_action_just_pressed(&"ui_cancel"):
 		_set_open(false)
+		closed.emit()
 
 
 func _set_open(value: bool) -> void:
