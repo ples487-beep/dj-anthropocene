@@ -1,14 +1,21 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [application]
 
 config/name="apocapedia"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://room/room.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 
 [display]
 
-window/size/viewport_width=1152
 window/size/viewport_height=720
 window/size/min_width=800
 window/size/min_height=480
@@ -16,9 +23,10 @@ window/size/min_height=480
 [file_customization]
 
 folder_colors={
-"res://assets/": "blue",
-"res://scenes/": "green",
-"res://scripts/": "yellow"
+"res://computer/": "green",
+"res://player/": "blue",
+"res://room/": "yellow",
+"res://sites/": "purple"
 }
 
 [input]
@@ -53,14 +61,18 @@ move_right={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_2="player"
+
 [physics]
 
-common/enable_object_picking=false
-common/physics_interpolation=true
 3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
+common/enable_object_picking=false
 
 [rendering]
 
-renderer/rendering_method="mobile"
 rendering_device/vsync/frame_queue_size=1
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="mobile"

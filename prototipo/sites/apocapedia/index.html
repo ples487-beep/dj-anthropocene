@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Apocapedia</title>
+    </head>
+<style>
+* { box-sizing: border; }
+
+html {
+    font-size: 16px;
+    background: #fff;
+    color: #202122;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: serif;
+
+    margin: 0;
+    line-height: 1.375;
+    font-family: serif;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-progressive,#36c);
+    background: none;
+}
+
+.page-container {
+    max-width: 99.75rem;
+    margin: 0 auto;
+    padding: 0.05px 1.5rem 0px 1.5rem;
+}
+
+.page-container-inner {
+    display: grid;
+    column-gap: 24px;
+    grid-template: min-content 1fr min-content / 12.25rem minmax(0,1fr);
+    grid-template-areas: 'siteNotice siteNotice' 'columnStart pageContent' 'footer footer';
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    margin: 0.5rem 0rem;
+}
+
+.logo {
+    color: blue;
+}
+
+.body-header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px grey solid;
+}
+
+.contents {
+}
+
+.main {
+    font-family: sans-serif;
+}
+
+.main p {
+    margin: 0.5em 0 1em 0;
+}
+</style>
+    <body>
+
+        <div class="page-container">
+
+            <header class="header">
+                <div class="logo">
+                    <h1>Apocapedia<h1>
+                </div>
+
+                <div class="nav">
+                    <a>help</a>
+                    <a>more</a>
+                    <a>stuff</a>
+                </div>
+            </header>
+
+            <div class="page-container-inner">
+                <div class="contents">
+                    <h2>Contents</h2>
+                </div>
+                <div id="content" class="main">
+
+                    <header class="body-header">
+                        <h1>Venus Scenario</h1>
+                        <a>10 idiomas</a>
+                    </header>
+
+                    <p>I am the venus <a href="">scenario</a></p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+</html>
