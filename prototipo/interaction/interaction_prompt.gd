@@ -37,18 +37,23 @@ func _init() -> void:
 
 func _process(_delta: float) -> void:
 	var text := ""
-	if Interactable.current:
-		text = Interactable.current.back_prompt
-	else:
-		var target := _target()
-		if target:
-			text = target.prompt
+	if not Dialogue.is_active():
+		text = _current_prompt()
 	_panel.visible = not text.is_empty()
 	if _panel.visible:
 		_label.text = "%s   %s" % [_key_name(), text]
 
 
+func _current_prompt() -> String:
+	if Interactable.current:
+		return Interactable.current.back_prompt
+	var target := _target()
+	return target.prompt if target else ""
+
+
 func _unhandled_input(event: InputEvent) -> void:
+	if Dialogue.is_active():
+		return
 	var active := Interactable.current
 	if active:
 		if event.is_action_pressed(&"interact") or event.is_action_pressed(&"ui_cancel") or _is_move(event):

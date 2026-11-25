@@ -5,7 +5,7 @@ extends CharacterBody3D
 @onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
 
 var _view: Basis
-var _controllable: bool = true
+var _locks: Dictionary[StringName, bool] = {}
 
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	var movement := Input.get_vector(
 		&"move_left", &"move_right", &"move_forward", &"move_backward"
 	)
-	if not _controllable:
+	if not _locks.is_empty():
 		movement = Vector2.ZERO
 	if movement.is_zero_approx():
 		_view = get_viewport().get_camera_3d().global_basis
@@ -45,8 +45,11 @@ func _update_sprite(movement: Vector2) -> void:
 		sprite.play(animation)
 
 
-func set_controllable(value: bool) -> void:
-	_controllable = value
+func set_input_lock(reason: StringName, locked: bool) -> void:
+	if locked:
+		_locks[reason] = true
+	else:
+		_locks.erase(reason)
 
 
 func _on_focus_exited() -> void:

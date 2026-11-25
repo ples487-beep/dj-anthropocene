@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://camera/camera_shot.gd" id="5_shot"]
 [ext_resource type="Script" path="res://interaction/interactable.gd" id="6_interactable"]
 [ext_resource type="Script" path="res://interaction/interaction_prompt.gd" id="7_prompt"]
+[ext_resource type="Texture2D" uid="uid://bmrb1kxaenuem" path="res://assets/desktop.png" id="8_view"]
 
 [sub_resource type="StandardMaterial3D" id="Material_wall"]
 albedo_color = Color(0.38, 0.43, 0.46, 1)
@@ -17,11 +18,11 @@ roughness = 1.0
 
 [sub_resource type="StandardMaterial3D" id="Material_outside"]
 shading_mode = 0
-albedo_color = Color(0.55, 0.86, 0.95, 1)
+albedo_texture = ExtResource("8_view")
 
-[sub_resource type="BoxMesh" id="BoxMesh_outside"]
+[sub_resource type="QuadMesh" id="QuadMesh_outside"]
 material = SubResource("Material_outside")
-size = Vector3(0.2, 10, 16)
+size = Vector2(12.8, 7.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape_window_zone"]
 size = Vector3(2, 2.4, 3)
@@ -59,8 +60,9 @@ operation = 2
 size = Vector3(3, 2, 1)
 
 [node name="Outside" type="MeshInstance3D" parent="."]
-position = Vector3(-8, 3, 0)
-mesh = SubResource("BoxMesh_outside")
+position = Vector3(-8, 3.4, -2.2)
+rotation_degrees = Vector3(0, 90, 0)
+mesh = SubResource("QuadMesh_outside")
 
 [node name="WallLeft" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 3, 0)
@@ -120,6 +122,8 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("6_interactable")
 prompt = "Look out the window"
+lines = PackedStringArray("(Is that... screaming? Far away.)", "(And that number again. 13.)")
+sets_flag = &"saw_window"
 shot = NodePath("../../Shots/Window")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Window"]

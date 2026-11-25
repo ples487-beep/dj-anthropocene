@@ -1,3 +1,11 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [application]
@@ -5,6 +13,11 @@ config_version=5
 config/name="apocapedia"
 run/main_scene="res://room/room.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
+
+[autoload]
+
+Story="*res://story/story.gd"
+Dialogue="*res://dialogue/dialogue.gd"
 
 [display]
 
@@ -17,10 +30,12 @@ window/size/min_height=480
 folder_colors={
 "res://camera/": "red",
 "res://computer/": "green",
+"res://dialogue/": "teal",
 "res://interaction/": "orange",
 "res://player/": "blue",
 "res://room/": "yellow",
-"res://sites/": "purple"
+"res://sites/": "purple",
+"res://story/": "pink"
 }
 
 [input]
