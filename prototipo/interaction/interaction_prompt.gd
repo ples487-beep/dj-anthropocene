@@ -37,7 +37,7 @@ func _init() -> void:
 
 func _process(_delta: float) -> void:
 	var text := ""
-	if not Dialogue.is_active():
+	if not Dialogue.is_active() and not Cutscene.is_playing():
 		text = _current_prompt()
 	_panel.visible = not text.is_empty()
 	if _panel.visible:
@@ -52,7 +52,7 @@ func _current_prompt() -> String:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Dialogue.is_active():
+	if Dialogue.is_active() or Cutscene.is_playing():
 		return
 	var active := Interactable.current
 	if active:

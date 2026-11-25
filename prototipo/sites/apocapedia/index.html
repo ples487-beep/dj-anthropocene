@@ -104,12 +104,28 @@ a {
                         <a>10 idiomas</a>
                     </header>
 
-                    <p>I am the venus <a href="">scenario</a></p>
+                    <p>I am the venus <a id="scenario" href="">scenario</a></p>
+
+                    <p id="edited">This page was last edited on 13 October 2026.</p>
+                    <p id="sana-online" hidden>13 October 2026 - Sana comes online</p>
 
                 </div>
             </div>
 
         </div>
+
+        <script>
+            game.on("state", function () {
+                var year = game.has("venus_2036") ? "2036" : "2026";
+                document.getElementById("edited").textContent = "This page was last edited on 13 October " + year + ".";
+                document.getElementById("sana-online").hidden = !game.has("sana_online");
+            });
+            document.getElementById("scenario").addEventListener("click", function (event) {
+                event.preventDefault();
+                game.glitch(0.8);
+            });
+            game.flag("read_venus");
+        </script>
 
     </body>
 </html>

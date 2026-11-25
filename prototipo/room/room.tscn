@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://interaction/interactable.gd" id="6_interactable"]
 [ext_resource type="Script" path="res://interaction/interaction_prompt.gd" id="7_prompt"]
 [ext_resource type="Texture2D" uid="uid://bmrb1kxaenuem" path="res://assets/desktop.png" id="8_view"]
+[ext_resource type="Script" path="res://story/act_1.gd" id="9_act1"]
 
 [sub_resource type="StandardMaterial3D" id="Material_wall"]
 albedo_color = Color(0.38, 0.43, 0.46, 1)
@@ -146,3 +147,8 @@ position = Vector3(0, 1.2, 1.8)
 
 [node name="InteractionPrompt" type="CanvasLayer" parent="."]
 script = ExtResource("7_prompt")
+
+[node name="Act1" type="Node" parent="." node_paths=PackedStringArray("computer", "pc_shot")]
+script = ExtResource("9_act1")
+computer = NodePath("../Computer")
+pc_shot = NodePath("../Computer/Shot")

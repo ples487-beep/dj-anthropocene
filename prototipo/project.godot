@@ -18,6 +18,9 @@ config/features=PackedStringArray("4.7", "Mobile")
 
 Story="*res://story/story.gd"
 Dialogue="*res://dialogue/dialogue.gd"
+Web="*res://web/web.gd"
+Fx="*res://fx/fx.gd"
+Cutscene="*res://cutscene/cutscene.gd"
 
 [display]
 
@@ -30,12 +33,15 @@ window/size/min_height=480
 folder_colors={
 "res://camera/": "red",
 "res://computer/": "green",
+"res://cutscene/": "purple",
 "res://dialogue/": "teal",
+"res://fx/": "gray",
 "res://interaction/": "orange",
 "res://player/": "blue",
 "res://room/": "yellow",
 "res://sites/": "purple",
-"res://story/": "pink"
+"res://story/": "pink",
+"res://web/": "gray"
 }
 
 [input]

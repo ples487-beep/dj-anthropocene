@@ -58,7 +58,7 @@ func engage() -> void:
 	current = self
 	var camera := _camera()
 	if camera and shot:
-		camera.play(shot)
+		camera.request(shot)
 	get_tree().call_group(&"player", &"set_input_lock", &"interaction", true)
 	engaged.emit()
 	if lines.is_empty():
@@ -75,7 +75,7 @@ func disengage() -> void:
 	current = null
 	var camera := _camera()
 	if camera and shot:
-		camera.stop()
+		camera.release(shot)
 	get_tree().call_group(&"player", &"set_input_lock", &"interaction", false)
 	disengaged.emit()
 
