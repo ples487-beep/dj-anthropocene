@@ -1,0 +1,321 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #111;
+}
+
+a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #cfe9f5 url("assets/bg.png") center / cover no-repeat;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 16px;
+  padding: 0 20px 20px 10px;
+  min-height: 100vh;
+}
+
+.sidebar {
+  padding-top: 20px;
+}
+
+.logo {
+  margin: 60px 0 24px 12px;
+  font: 700 34px/1 "Arial Narrow", Arial, sans-serif;
+  font-stretch: condensed;
+  letter-spacing: -1px;
+  text-transform: lowercase;
+}
+
+.box {
+  background: #fff;
+  border: 1px solid #c8d4dc;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  font-size: 12px;
+}
+
+.box ul {
+  margin: 0;
+  padding-left: 14px;
+  list-style: disc;
+  color: #0645ad;
+}
+
+.box li {
+  line-height: 1.6;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search input {
+  width: 100%;
+  padding: 3px;
+  border: 1px solid #c8d4dc;
+}
+
+.search button {
+  align-self: flex-end;
+  padding: 2px 14px;
+  font-size: 12px;
+}
+
+.content {
+  padding-top: 20px;
+  min-width: 0;
+}
+
+.user {
+  text-align: right;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  padding-left: 16px;
+}
+
+.tabs a {
+  background: #fff;
+  border: 1px solid #c8d4dc;
+  border-bottom: none;
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+.page {
+  background: #fff;
+  border: 1px solid #c8d4dc;
+  padding: 20px 24px 40px;
+  width: 100%;
+  max-width:100%;
+  margin: 0 auto;
+  display: flow-root;
+}
+
+.page h1 {
+  margin: 0 0 16px;
+  font-weight: 400;
+  font-size: 32px;
+  border-bottom: 1px solid #c8d4dc;
+}
+
+.page h2 {
+  margin: 32px 0 12px;
+  font-weight: 400;
+  font-size: 24px;
+  border-bottom: 1px solid #c8d4dc;
+}
+
+.page p {
+  margin: 0 0 12px;
+}
+
+.edit-link {
+  font-size: 12px;
+  color: #777;
+}
+
+.infobox {
+  float: right;
+  width: 300px;
+  margin: 0 0 16px 20px;
+  border: 1px solid #aaa;
+  background: #fff;
+}
+
+.infobox h3 {
+  margin: 0;
+  padding: 10px;
+  background: #ffffb8;
+  font-size: 22px;
+}
+
+.infobox img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.infobox .caption {
+  margin: 0;
+  padding: 8px;
+  text-align: center;
+  background: #ffffb8;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0645ad;
+}
+
+.infobox dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 14px;
+  font-size: 12px;
+}
+
+.infobox dt {
+  font-weight: 700;
+}
+
+.infobox dd {
+  margin: 0;
+}
+
+.thumb{
+  width:220px;
+  margin: 0 0 12px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  background:#e3f0ff
+
+}
+.thumb.right { float: right; margin-left: 16px; }
+.thumb.left  { float: left;  margin-right: 16px; }
+
+.thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+}
+
+.thumb figcaption {
+  padding: 6px 4px 2px;
+  color: #222;
+}
+
+.card {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.card .logo {
+  margin: 20px 0 8px;
+}
+
+.card .page {
+  min-height: 70vh;
+}
+
+
+.info-icon {
+  display: block;
+  width: 28px;
+  height: auto;
+  margin: 8px 0 4px;
+}
+
+.welcome {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+/* ---------- formulário ---------- */
+.login-form label {
+  display: block;
+  margin: 16px 0 4px;
+  font-weight: 700;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  border: 1px solid #888;
+  font: inherit;
+}
+
+/* checkbox e texto na mesma linha */
+.login-form .remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.login-form .remember label {
+  margin: 0;
+  font-weight: 400;
+}
+
+.login-form button {
+  margin-top: 4px;
+  padding: 6px 20px;
+  font: inherit;
+}
+
+.help-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+  padding-left: 0;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+
+.page .box h2 {
+  margin: -10px -12px 10px;
+  padding: 6px 12px;
+  background: #e3f0ff;
+  border-bottom: 1px solid var(--border);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+.page .box {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+
+.plain-list {
+  margin: 0;
+  padding-left: 18px;
+  color: inherit;
+}
+
+.welcome-box { margin-bottom: 0; }
